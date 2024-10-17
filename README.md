@@ -42,7 +42,7 @@ C:.
  cd nextjs-authentication
 
 *2. Install Dependencies 
-
+  
   npm install
 
 *3. Set Up Environment Variables

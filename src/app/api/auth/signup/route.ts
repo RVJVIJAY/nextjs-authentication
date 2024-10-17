@@ -8,7 +8,6 @@ export async function POST(req: NextRequest) {
    
   try {
     await connectToDatabase(); // Connect to MongoDB
-
     const { username, password ,email } = await req.json();
 
     // Check if user already exists
@@ -21,7 +20,6 @@ export async function POST(req: NextRequest) {
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ username,email, password: hashedPassword });
     await newUser.save();
-    
     return NextResponse.json({ message: 'User created successfully' }, { status: 201 });
     
   } catch (error) {
