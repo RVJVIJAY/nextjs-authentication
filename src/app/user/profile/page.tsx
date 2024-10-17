@@ -1,7 +1,7 @@
 'use client';
-
 import React from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 // import Link from 'next/link';
 
 const Profile = () => {
@@ -27,7 +27,7 @@ const Profile = () => {
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-3xl font-bold">MyApp</h1>
         <ul className="flex space-x-6">
-          <li className="hover:text-gray-200 cursor-pointer">Home</li>
+          <li className="hover:text-gray-200 cursor-pointer"><Link href={`/`}>Home</Link></li>
           <li className="hover:text-gray-200 cursor-pointer">Profile</li>
           <li className="hover:text-gray-200 cursor-pointer">Settings</li>
         </ul>

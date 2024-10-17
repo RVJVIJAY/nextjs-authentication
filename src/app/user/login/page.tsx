@@ -1,6 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -19,9 +20,23 @@ export default function LoginPage() {
       if (res.ok) {
         localStorage.setItem('user',email)
         route.push('/user/profile')
-        alert('Login successful');
+        toast.success(' successfull!', {
+          position: 'top-right', // Position at top right
+          autoClose: 3000, // Auto close after 3 seconds
+          hideProgressBar: false, // Show progress bar
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
       } else {
-        alert('Login failed');
+        toast.error("Login Failed", {
+          position: 'top-right', // Position at top right
+          autoClose: 3000, // Auto close after 3 seconds
+          hideProgressBar: false, // Show progress bar
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
       }
     } catch (err) {
         console.log(err)
@@ -31,6 +46,7 @@ export default function LoginPage() {
 
   return (
   <form onSubmit={handleSubmit} className="flex flex-col max-w-sm mx-auto p-6 bg-white rounded-lg shadow-md">
+  <h1 className='text-center mb-4 text-blue-500'>Login Form</h1>
   <label className="mb-2 text-sm font-semibold text-gray-700" htmlFor="email">Email</label>
   <input
     type="text"

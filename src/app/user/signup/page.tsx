@@ -1,7 +1,9 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import toast from 'react-hot-toast';
+import {toast }from 'react-toastify'
+
+
 export default function SignupPage() {
     const route=useRouter();
   const [username, setUsername] = useState('');
@@ -20,21 +22,35 @@ export default function SignupPage() {
 
       // console.log(res)
       if (res.ok) {
-        //alert('Signup successful');
-        toast.success("Signup Successfully")
+        toast.success('signup successfull!', {
+          position: 'top-right', // Position at top right
+          autoClose: 3000, // Auto close after 3 seconds
+          hideProgressBar: false, // Show progress bar
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
         route.push('/user/login')
       } else {
         //alert('Signup failed');
-        toast.error("Signup Failed") 
+         toast.error("Signup Failed", {
+      position: 'top-right', // Position at top right
+      autoClose: 3000, // Auto close after 3 seconds
+      hideProgressBar: false, // Show progress bar
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
       }
     } catch (err) {
         console.log(err)
-      alert('An error occurred');
+      toast.error('An error occurred');
     }
   };
 
   return (
 <form onSubmit={handleSubmit} className="flex flex-col max-w-sm mx-auto p-6 bg-white rounded-lg shadow-md">
+  <h1 className='text-center mb-3'>Signup Form</h1>
   <label className="mb-2 text-sm font-semibold text-gray-700" htmlFor="username">Username</label>
   <input
     type="text"
